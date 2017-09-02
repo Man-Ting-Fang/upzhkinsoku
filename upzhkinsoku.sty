@@ -1,0 +1,165 @@
+
+
+% upzhkinsoku.sty
+% Copyright 2017 Yue ZHANG
+% License: Knuth License (https://ctan.org/license/knuth)
+
+\csname ENDINPUTUPZHKINSOKUDOTSTY\endcsname
+
+\let\ENDINPUTUPZHKINSOKUDOTSTY=\endinput
+
+\begingroup\expandafter\expandafter\expandafter\endgroup
+  \expandafter\ifx\csname ProvidesPackage\endcsname\relax
+  \else
+    \ProvidesPackage{upzhkinsoku}[2017/09/02 v0.2
+      Supplementary Chinese kinsoku for Unicode *pTeX]%
+  \fi
+
+\edef\UPZHKINSOKUDOTSTYRESTORECATCODE{%
+  \catcode`\noexpand\@=\the\catcode`\@\relax}
+
+\catcode`\@=11\relax
+
+\def\upzhkinsoku@ifprimitive#1{%
+  \begingroup
+    \edef\upzhkinsoku@temp@meaning{\meaning#1}%
+    \edef\upzhkinsoku@temp@string{\string#1}%
+    \expandafter
+  \endgroup
+  \ifx\upzhkinsoku@temp@meaning\upzhkinsoku@temp@string}
+
+\upzhkinsoku@ifprimitive\ucs
+\else
+  \errmessage{upTeX / e-upTeX / ApTeX is required}%
+  \UPZHKINSOKUDOTSTYRESTORECATCODE
+  \expandafter\endinput
+\fi
+
+\ifnum\ucs"3000="3000\relax
+\else
+  \errmessage{Unicode upTeX / Unicode e-upTeX / ApTeX is required}%
+  \UPZHKINSOKUDOTSTYRESTORECATCODE
+  \expandafter\endinput
+\fi
+
+\def\upzhkinsoku@setpenalties{%
+  \postbreakpenalty`\#=10000\relax % U+0023
+  \postbreakpenalty"24=10000\relax % U+0024 ($; variable slot)
+  \prebreakpenalty`\%=10000\relax  % U+0025
+  \prebreakpenalty`\&=10000\relax  % U+0026
+  \prebreakpenalty`\*=10000\relax  % U+002A
+  \prebreakpenalty"2B=10000\relax  % U+002B (+; \+ is \outer in plain.tex)
+  \prebreakpenalty`\/=10000\relax  % U+002F
+  \prebreakpenalty`\==10000\relax  % U+003D
+  \postbreakpenalty`\@=10000\relax % U+0040
+  \prebreakpenalty`\^=10000\relax  % U+005E
+  \prebreakpenalty`\~=10000\relax  % U+007E
+  \postbreakpenalty`〚=10000\relax % U+301A
+  \prebreakpenalty`〛=10000\relax  % U+301B
+  \prebreakpenalty"B7=10000\relax  % U+00B7 (·; variable slot)
+  \prebreakpenalty`•=10000\relax   % U+2022
+  \prebreakpenalty`‧=10000\relax  % U+2027
+  \prebreakpenalty`‐=10000\relax   % U+2010
+  \prebreakpenalty`–=10000\relax   % U+2013
+  \prebreakpenalty`－=10000\relax  % U+FF0D
+  \prebreakpenalty`…=0\relax       % U+2026
+  \prebreakpenalty`‥=0\relax      % U+2025
+  \prebreakpenalty`／=10000\relax  % U+FF0F
+  \prebreakpenalty`～=10000\relax  % U+FF5E
+}
+\def\upzhkinsoku@setxspcodes{%
+  \xspcode`\!=2\relax % U+0021
+  \xspcode`\#=1\relax % U+0023
+  \xspcode"24=1\relax % U+0024 ($; variable slot)
+  \xspcode`\%=2\relax % U+0025
+  \xspcode`\&=3\relax % U+0026
+  \xspcode`\:=2\relax % U+003A
+  \xspcode`\?=2\relax % U+003F
+  \xspcode`\@=1\relax % U+0040
+}
+\def\upzhkinsoku@setinhibitxspcodes{%
+  \inhibitxspcode`〚=2\relax % U+301A
+  \inhibitxspcode`〛=1\relax % U+301B
+  \inhibitxspcode"B7=0\relax % U+00B7 (·; variable slot)
+  \inhibitxspcode`•=0\relax  % U+2022
+  \inhibitxspcode`‧=0\relax % U+2027
+  \inhibitxspcode`・=0\relax % U+30FB
+  \inhibitxspcode`：=1\relax % U+FF1A
+  \inhibitxspcode`！=1\relax % U+FF01
+  \inhibitxspcode`‐=0\relax  % U+2010
+  \inhibitxspcode`–=0\relax  % U+2013
+  \inhibitxspcode`⸺=0\relax  % U+2E3A
+  \inhibitxspcode`－=0\relax % U+FF0D
+  \inhibitxspcode`‥=0\relax % U+2025
+  \inhibitxspcode`／=0\relax % U+FF0F
+}
+
+\def\upzhkinsoku@setwith@ascii{% variable slots
+  \prebreakpenalty"3C=10000\relax  % <
+  \prebreakpenalty"3E=10000\relax  % >
+  \prebreakpenalty"5C=10000\relax  % \
+  \prebreakpenalty"5F=10000\relax  % _
+  \postbreakpenalty"7B=10000\relax % {
+  \prebreakpenalty"7C=10000\relax  % |
+  \prebreakpenalty"7D=10000\relax  % }
+  \xspcode"22=0\relax % "
+  \xspcode"3C=0\relax % <
+  \xspcode"3E=0\relax % >
+  \xspcode"5C=0\relax % \
+  \xspcode"7B=1\relax % {
+  \xspcode"7D=2\relax % }
+}
+\def\upzhkinsoku@setwith@otlatin{% variable slots
+  \postbreakpenalty"3C=10000\relax % ¡
+  \postbreakpenalty"3E=10000\relax % ¿
+  \postbreakpenalty"5C=10000\relax % “
+  \prebreakpenalty"5F=0\relax      % ˙
+  \prebreakpenalty"7B=10000\relax  % –
+  \prebreakpenalty"7C=0\relax      % —
+  \prebreakpenalty"7D=0\relax      % ˝
+  \xspcode"22=2\relax % ”
+  \xspcode"3C=1\relax % ¡
+  \xspcode"3E=1\relax % ¿
+  \xspcode"5C=1\relax % “
+  \xspcode"7B=0\relax % –
+  \xspcode"7D=0\relax % ˝
+}
+
+\def\DisableOTLatinVariableSlotsKinsoku{\upzhkinsoku@setwith@ascii}
+\def\EnableOTLatinVariableSlotsKinsoku{\upzhkinsoku@setwith@otlatin}
+
+\upzhkinsoku@ifprimitive\input
+  \def\upzhkinsoku@input#1{\input#1\relax}%
+\else
+  \def\upzhkinsoku@input#1{\input{#1}}%
+\fi
+
+\edef\upzhkinsoku@otone{OT1}
+\edef\upzhkinsoku@otfour{OT4}
+
+\def\setupzhkinsokuwith#1{%
+  \upzhkinsoku@input{ukinsoku.tex}%
+  \upzhkinsoku@setpenalties
+  \upzhkinsoku@setxspcodes
+  \upzhkinsoku@setinhibitxspcodes
+  \edef\upzhkinsoku@defaultfontenc{#1}%
+  \ifx\upzhkinsoku@defaultfontenc\upzhkinsoku@otone
+    \upzhkinsoku@setwith@otlatin
+  \else
+    \ifx\upzhkinsoku@defaultfontenc\upzhkinsoku@otfour
+      \upzhkinsoku@setwith@otlatin
+    \else
+      \upzhkinsoku@setwith@ascii
+    \fi
+  \fi}
+
+\begingroup\expandafter\expandafter\expandafter\endgroup
+  \expandafter\ifx\csname encodingdefault\endcsname\relax
+    \setupzhkinsokuwith{\upzhkinsoku@otone}%
+  \else
+    \AtBeginDocument{\setupzhkinsokuwith{\encodingdefault}}%
+  \fi
+
+\UPZHKINSOKUDOTSTYRESTORECATCODE
+
+\endinput

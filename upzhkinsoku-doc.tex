@@ -1,0 +1,82 @@
+
+
+% upzhkinsoku-doc.tex
+
+% !TeX encoding = UTF-8
+% !TeX program  = pdfLaTeX
+
+\RequirePackage{fix-cm}
+
+\documentclass[a4paper]{article}
+
+\usepackage[OT1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[UKenglish]{babel}
+\usepackage[babel]{microtype}
+\usepackage{etoolbox}
+
+\AtBeginEnvironment{verbatim}{\microtypesetup{activate=false}}
+
+\newcommand\NormalSans{\normalfont\sffamily}
+\newcommand\pkg[1]{{\protect\NormalSans#1}}
+
+\newcommand\pTeX{p\kern-0.15em\TeX}
+\newcommand\e{\ensuremath{\varepsilon}}
+\newcommand\upTeX{u\pTeX}
+\newcommand\ApTeX{A\kern-0.1em\pTeX}
+
+\newcommand\kn{test}
+\newcommand\sk{test}
+
+\font\kn=ipxm-r-u79 at 9.62216pt
+\font\sk=ipxm-r-u52 at 9.62216pt
+
+\begin{document}
+
+\title{The \pkg{upzhkinsoku} package%
+  \thanks{CTAN Homepage: \texttt{https://ctan.org/pkg/upzhkinsoku}}
+  \thanks{Repository: \texttt{https://github.com/Man-Ting-Fang/upzhkinsoku}}}
+\author{Yue \textsc{Zhang}}
+\date{2017-09-02\quad v0.2}
+
+\maketitle
+
+\begin{abstract}
+This package provides supplementary Chinese kinsoku (line breaking rules etc.)
+settings for Unicode (\e-)\upTeX\footnote{(\e-)\upTeX\ when using Unicode as its
+internal encoding.} and \ApTeX.
+\end{abstract}
+
+\section{Introduction}
+
+\textit{Kinsoku} is the romanisation of the Japanese word ``{\kn\char"81\relax
+\sk\char"47}'' which means ``prohibition rules''. It is a set of rules to avoid
+prohibited line breaks in CJK typography, such as ``line-start prohibition
+rules'', ``line-end prohibition rules'', inseparable or unbreakable character
+sequences and so on.\footnote{\textit{Requirements for Japanese Text Layout}:
+\texttt{https://www.w3.org/TR/jlreq/}}
+
+(\e-)\upTeX\ and \ApTeX's default kinsoku parameters are set in
+\verb|ukinsoku.tex|. However, the default settings do not satisfy Chinese
+typesetting,\footnote{\textit{Requirements for Chinese Text Layout}:
+\texttt{https://www.w3.org/TR/clreq/}} thus this package provides supplementary
+Chinese kinsoku settings for Unicode (\e-)\upTeX\ and \ApTeX.
+
+Please note that this package is specifically optimised for Chinese typesetting,
+so it is usually not suitable for document whose main language is not Chinese.
+
+\section{Usage}
+
+This package has no options, just load it as usual:
+\begin{itemize}
+\item \LaTeX: \verb|\usepackage{upzhkinsoku}|
+\item Plain \TeX: \verb|\input upzhkinsoku.sty|
+\end{itemize}
+If you are using \LaTeX\ and would like to change some kinsoku parameters (this
+is usually unnecessary, however), please do that after \verb|\begin{document}|,
+or via \verb|\AtBeginDocument| after loading this package; otherwise they may be
+overridden.\footnote{For technical reasons, the actual execution of this package
+is delayed to \texttt{\char"5C begin\char"7B document\char"7D}, also via
+\texttt{\char"5C AtBeginDocument}.}
+
+\end{document}
