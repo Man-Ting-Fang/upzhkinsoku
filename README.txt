@@ -6,7 +6,7 @@ CTAN Homepage: https://ctan.org/pkg/upzhkinsoku
 
 Repository: https://github.com/Man-Ting-Fang/upzhkinsoku
 
-Version: 2017-09-02 v0.2
+Version: 2017-09-04 v0.2a
 
 Copyright 2017 Yue ZHANG
 
