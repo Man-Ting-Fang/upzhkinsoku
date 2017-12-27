@@ -11,7 +11,7 @@
 \begingroup\expandafter\expandafter\expandafter\endgroup
   \expandafter\ifx\csname ProvidesPackage\endcsname\relax
   \else
-    \ProvidesPackage{upzhkinsoku}[2017/09/04 v0.2a
+    \ProvidesPackage{upzhkinsoku}[2017/12/27 v0.3
       Supplementary Chinese kinsoku for Unicode *pTeX]%
   \fi
 
@@ -43,55 +43,55 @@
 \fi
 
 \def\upzhkinsoku@setpenalties{%
-  \postbreakpenalty`\#=10000\relax % U+0023
-  \postbreakpenalty"24=10000\relax % U+0024 ($; variable slot)
-  \prebreakpenalty`\%=10000\relax  % U+0025
-  \prebreakpenalty`\&=10000\relax  % U+0026
-  \prebreakpenalty`\*=10000\relax  % U+002A
-  \prebreakpenalty"2B=10000\relax  % U+002B (+; \+ is \outer in plain.tex)
-  \prebreakpenalty`\/=10000\relax  % U+002F
-  \prebreakpenalty`\==10000\relax  % U+003D
-  \postbreakpenalty`\@=10000\relax % U+0040
-  \prebreakpenalty`\^=10000\relax  % U+005E
-  \prebreakpenalty`\~=10000\relax  % U+007E
-  \postbreakpenalty`〚=10000\relax % U+301A
-  \prebreakpenalty`〛=10000\relax  % U+301B
-  \prebreakpenalty"B7=10000\relax  % U+00B7 (·; variable slot)
-  \prebreakpenalty`•=10000\relax   % U+2022
-  \prebreakpenalty`‧=10000\relax  % U+2027
-  \prebreakpenalty`‐=10000\relax   % U+2010
-  \prebreakpenalty`–=10000\relax   % U+2013
-  \prebreakpenalty`－=10000\relax  % U+FF0D
-  \prebreakpenalty`…=0\relax       % U+2026
-  \prebreakpenalty`‥=0\relax      % U+2025
-  \prebreakpenalty`／=10000\relax  % U+FF0F
-  \prebreakpenalty`～=10000\relax  % U+FF5E
+  \postbreakpenalty"23=10000\relax % #
+  \postbreakpenalty"24=10000\relax % $ (variable slot)
+  \prebreakpenalty"25=10000\relax  % %
+  \prebreakpenalty"26=10000\relax  % &
+  \prebreakpenalty"2A=10000\relax  % *
+  \prebreakpenalty"2B=10000\relax  % + (\+ is \outer in plain.tex)
+  \prebreakpenalty"2F=10000\relax  % /
+  \prebreakpenalty"3D=10000\relax  % =
+  \postbreakpenalty"40=10000\relax % @
+  \prebreakpenalty"5E=10000\relax  % ^
+  \prebreakpenalty"7E=10000\relax  % ~
+  \postbreakpenalty\ucs"301A=10000\relax % 〚
+  \prebreakpenalty\ucs"301B=10000\relax  % 〛
+  \prebreakpenalty"B7=10000\relax  % · (variable slot)
+  \prebreakpenalty\ucs"2022=10000\relax  % •
+  \prebreakpenalty\ucs"2027=10000\relax  % ‧
+  \prebreakpenalty\ucs"2010=10000\relax  % ‐
+  \prebreakpenalty\ucs"2013=10000\relax  % –
+  \prebreakpenalty\ucs"FF0D=10000\relax  % －
+  \prebreakpenalty\ucs"2026=0\relax      % …
+  \prebreakpenalty\ucs"2025=0\relax      % ‥
+  \prebreakpenalty\ucs"FF0F=10000\relax  % ／
+  \prebreakpenalty\ucs"FF5E=10000\relax  % ～
 }
 \def\upzhkinsoku@setxspcodes{%
-  \xspcode`\!=2\relax % U+0021
-  \xspcode`\#=1\relax % U+0023
-  \xspcode"24=1\relax % U+0024 ($; variable slot)
-  \xspcode`\%=2\relax % U+0025
-  \xspcode`\&=3\relax % U+0026
-  \xspcode`\:=2\relax % U+003A
-  \xspcode`\?=2\relax % U+003F
-  \xspcode`\@=1\relax % U+0040
+  \xspcode"21=2\relax % !
+  \xspcode"23=1\relax % #
+  \xspcode"24=1\relax % $ (variable slot)
+  \xspcode"25=2\relax % %
+  \xspcode"26=3\relax % &
+  \xspcode"3A=2\relax % :
+  \xspcode"3F=2\relax % ?
+  \xspcode"40=1\relax % @
 }
 \def\upzhkinsoku@setinhibitxspcodes{%
-  \inhibitxspcode`〚=2\relax % U+301A
-  \inhibitxspcode`〛=1\relax % U+301B
-  \inhibitxspcode"B7=0\relax % U+00B7 (·; variable slot)
-  \inhibitxspcode`•=0\relax  % U+2022
-  \inhibitxspcode`‧=0\relax % U+2027
-  \inhibitxspcode`・=0\relax % U+30FB
-  \inhibitxspcode`：=1\relax % U+FF1A
-  \inhibitxspcode`！=1\relax % U+FF01
-  \inhibitxspcode`‐=0\relax  % U+2010
-  \inhibitxspcode`–=0\relax  % U+2013
-  \inhibitxspcode`⸺=0\relax  % U+2E3A
-  \inhibitxspcode`－=0\relax % U+FF0D
-  \inhibitxspcode`‥=0\relax % U+2025
-  \inhibitxspcode`／=0\relax % U+FF0F
+  \inhibitxspcode\ucs"301A=2\relax % 〚
+  \inhibitxspcode\ucs"301B=1\relax % 〛
+  \inhibitxspcode"B7=0\relax % · (variable slot)
+  \inhibitxspcode\ucs"2022=0\relax % •
+  \inhibitxspcode\ucs"2027=0\relax % ‧
+  \inhibitxspcode\ucs"30FB=0\relax % ・
+  \inhibitxspcode\ucs"FF1A=1\relax % ：
+  \inhibitxspcode\ucs"FF01=1\relax % ！
+  \inhibitxspcode\ucs"2010=0\relax % ‐
+  \inhibitxspcode\ucs"2013=0\relax % –
+  \inhibitxspcode\ucs"2E3A=0\relax % ⸺
+  \inhibitxspcode\ucs"FF0D=0\relax % －
+  \inhibitxspcode\ucs"2025=0\relax % ‥
+  \inhibitxspcode\ucs"FF0F=0\relax % ／
 }
 
 \def\upzhkinsoku@setwith@ascii{% variable slots
@@ -128,17 +128,17 @@
 \def\DisableOTLatinVariableSlotsKinsoku{\upzhkinsoku@setwith@ascii}
 \def\EnableOTLatinVariableSlotsKinsoku{\upzhkinsoku@setwith@otlatin}
 
-\upzhkinsoku@ifprimitive\input
-  \def\upzhkinsoku@input#1{\input#1\relax}%
-\else
-  \def\upzhkinsoku@input#1{\input{#1}}%
-\fi
+%\upzhkinsoku@ifprimitive\input
+%  \def\upzhkinsoku@input#1{\input#1\relax}%
+%\else
+%  \def\upzhkinsoku@input#1{\input{#1}}%
+%\fi
 
-\edef\upzhkinsoku@otone{OT1}
-\edef\upzhkinsoku@otfour{OT4}
+\def\upzhkinsoku@otone{OT1}
+\def\upzhkinsoku@otfour{OT4}
 
 \def\setupzhkinsokuwith#1{%
-  \upzhkinsoku@input{ukinsoku.tex}%
+%  \upzhkinsoku@input{ukinsoku.tex}%
   \upzhkinsoku@setpenalties
   \upzhkinsoku@setxspcodes
   \upzhkinsoku@setinhibitxspcodes
