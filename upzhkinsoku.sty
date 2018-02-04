@@ -1,7 +1,7 @@
 
 
 % upzhkinsoku.sty
-% Copyright 2017 Yue ZHANG
+% Copyright 2017--2018 Yue ZHANG
 % License: Knuth License (https://ctan.org/license/knuth)
 
 \csname ENDINPUTUPZHKINSOKUDOTSTY\endcsname
@@ -11,7 +11,7 @@
 \begingroup\expandafter\expandafter\expandafter\endgroup
   \expandafter\ifx\csname ProvidesPackage\endcsname\relax
   \else
-    \ProvidesPackage{upzhkinsoku}[2017/12/27 v0.3
+    \ProvidesPackage{upzhkinsoku}[2018/02/04 v0.4
       Supplementary Chinese kinsoku for Unicode *pTeX]%
   \fi
 
@@ -56,7 +56,7 @@
   \prebreakpenalty"7E=10000\relax  % ~
   \postbreakpenalty\ucs"301A=10000\relax % 〚
   \prebreakpenalty\ucs"301B=10000\relax  % 〛
-  \prebreakpenalty"B7=10000\relax  % · (variable slot)
+  \prebreakpenalty\ucs"00B7=10000\relax  % ·
   \prebreakpenalty\ucs"2022=10000\relax  % •
   \prebreakpenalty\ucs"2027=10000\relax  % ‧
   \prebreakpenalty\ucs"2010=10000\relax  % ‐
@@ -80,7 +80,7 @@
 \def\upzhkinsoku@setinhibitxspcodes{%
   \inhibitxspcode\ucs"301A=2\relax % 〚
   \inhibitxspcode\ucs"301B=1\relax % 〛
-  \inhibitxspcode"B7=0\relax % · (variable slot)
+  \inhibitxspcode\ucs"00B7=0\relax % ·
   \inhibitxspcode\ucs"2022=0\relax % •
   \inhibitxspcode\ucs"2027=0\relax % ‧
   \inhibitxspcode\ucs"30FB=0\relax % ・
@@ -128,17 +128,11 @@
 \def\DisableOTLatinVariableSlotsKinsoku{\upzhkinsoku@setwith@ascii}
 \def\EnableOTLatinVariableSlotsKinsoku{\upzhkinsoku@setwith@otlatin}
 
-%\upzhkinsoku@ifprimitive\input
-%  \def\upzhkinsoku@input#1{\input#1\relax}%
-%\else
-%  \def\upzhkinsoku@input#1{\input{#1}}%
-%\fi
-
 \def\upzhkinsoku@otone{OT1}
 \def\upzhkinsoku@otfour{OT4}
 
 \def\setupzhkinsokuwith#1{%
-%  \upzhkinsoku@input{ukinsoku.tex}%
+%  \input ukinsoku.tex\relax
   \upzhkinsoku@setpenalties
   \upzhkinsoku@setxspcodes
   \upzhkinsoku@setinhibitxspcodes
