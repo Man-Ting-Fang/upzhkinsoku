@@ -11,7 +11,7 @@
 \begingroup\expandafter\expandafter\expandafter\endgroup
   \expandafter\ifx\csname ProvidesPackage\endcsname\relax
   \else
-    \ProvidesPackage{upzhkinsoku}[2018/02/04 v0.4
+    \ProvidesPackage{upzhkinsoku}[2018/04/07 v0.5
       Supplementary Chinese kinsoku for Unicode *pTeX]%
   \fi
 
@@ -44,7 +44,7 @@
 
 \def\upzhkinsoku@setpenalties{%
   \postbreakpenalty"23=10000\relax % #
-  \postbreakpenalty"24=10000\relax % $ (variable slot)
+%  \postbreakpenalty"24=10000\relax % $ (variable slot)
   \prebreakpenalty"25=10000\relax  % %
   \prebreakpenalty"26=10000\relax  % &
   \prebreakpenalty"2A=10000\relax  % *
@@ -54,6 +54,9 @@
   \postbreakpenalty"40=10000\relax % @
   \prebreakpenalty"5E=10000\relax  % ^
   \prebreakpenalty"7E=10000\relax  % ~
+  \prebreakpenalty\ucs"301E=10000\relax  % 〞
+  \postbreakpenalty\ucs"2329=10000\relax % 〈
+  \prebreakpenalty\ucs"232A=10000\relax  % 〉
   \postbreakpenalty\ucs"301A=10000\relax % 〚
   \prebreakpenalty\ucs"301B=10000\relax  % 〛
   \prebreakpenalty\ucs"00B7=10000\relax  % ·
@@ -66,11 +69,12 @@
   \prebreakpenalty\ucs"2025=0\relax      % ‥
   \prebreakpenalty\ucs"FF0F=10000\relax  % ／
   \prebreakpenalty\ucs"FF5E=10000\relax  % ～
+  \prebreakpenalty\ucs"301C=10000\relax  % 〜
 }
 \def\upzhkinsoku@setxspcodes{%
   \xspcode"21=2\relax % !
   \xspcode"23=1\relax % #
-  \xspcode"24=1\relax % $ (variable slot)
+%  \xspcode"24=1\relax % $ (variable slot)
   \xspcode"25=2\relax % %
   \xspcode"26=3\relax % &
   \xspcode"3A=2\relax % :
@@ -78,6 +82,9 @@
   \xspcode"40=1\relax % @
 }
 \def\upzhkinsoku@setinhibitxspcodes{%
+  \inhibitxspcode\ucs"301E=1\relax % 〞
+  \inhibitxspcode\ucs"2329=2\relax % 〈
+  \inhibitxspcode\ucs"232A=1\relax % 〉
   \inhibitxspcode\ucs"301A=2\relax % 〚
   \inhibitxspcode\ucs"301B=1\relax % 〛
   \inhibitxspcode\ucs"00B7=0\relax % ·
@@ -95,6 +102,7 @@
 }
 
 \def\upzhkinsoku@setwith@ascii{% variable slots
+  \prebreakpenalty"22=0\relax      % "
   \prebreakpenalty"3C=10000\relax  % <
   \prebreakpenalty"3E=10000\relax  % >
   \prebreakpenalty"5C=10000\relax  % \
@@ -110,6 +118,7 @@
   \xspcode"7D=2\relax % }
 }
 \def\upzhkinsoku@setwith@otlatin{% variable slots
+  \prebreakpenalty"22=10000\relax  % ”
   \postbreakpenalty"3C=10000\relax % ¡
   \postbreakpenalty"3E=10000\relax % ¿
   \postbreakpenalty"5C=10000\relax % “
